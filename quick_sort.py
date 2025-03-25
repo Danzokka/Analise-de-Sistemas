@@ -9,33 +9,32 @@ def quick_sort(arr: list[int]) -> list[int]:
         return arr
     
     # Caso recursivo
+    
+    # Com o pivo sendo o meio do array
     pivo = math.floor(len(arr) / 2)
-    left = pegar_esquerda_pivo(arr, arr[pivo])
-    meio = pegar_meio_pivo(arr, arr[pivo])
-    right = pegar_direita_pivo(arr, arr[pivo])
+    
+    # Com o pivo sendo o primeiro elemento do array
+    # pivo = 0
+    
+    # Com o pivo sendo o último elemento do array
+    # pivo = len(arr) - 1
+    
+    # Com o pivo sendo um elemento aleatório do array
+    # pivo = random.randint(0, len(arr) - 1)
+    
+    left = []
+    meio = []
+    right = []
+    
+    for i in range(len(arr)):
+        if arr[i] < arr[pivo]:
+            left.append(arr[i])
+        elif arr[i] > arr[pivo]:
+            right.append(arr[i])
+        else:
+            meio.append(arr[i])
     
     return quick_sort(left) + meio + quick_sort(right)
-
-def pegar_esquerda_pivo(arr: list[int], pivo: int) -> list[int]:
-    esquerda_pivo = []
-    for i in range(len(arr)):
-        if arr[i] < pivo:
-            esquerda_pivo.append(arr[i])
-    return esquerda_pivo
-
-def pegar_direita_pivo(arr: list[int], pivo: int) -> list[int]:
-    direita_pivo = []
-    for i in range(len(arr)):
-        if arr[i] > pivo:
-            direita_pivo.append(arr[i])
-    return direita_pivo
-
-def pegar_meio_pivo(arr: list[int], pivo: int) -> list[int]:
-    meio_pivo = []
-    for i in range(len(arr)):
-        if arr[i] == pivo:
-            meio_pivo.append(arr[i])
-    return meio_pivo
 
 def gerar_array_com_numeros_aleatorios(tamanho: int) -> list[int]:
     arr = []

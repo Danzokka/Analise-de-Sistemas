@@ -7,8 +7,18 @@ def merge_sort(arr: list[int]) -> list[int]:
     
     # Caso recursivo
     meio = len(arr) // 2
-    esquerda = merge_sort(arr[:meio])
-    direita = merge_sort(arr[meio:])
+    
+    esquerda = []
+    direita = []
+    
+    for i in range(meio):
+        esquerda.append(arr[i])
+        
+    for i in range(meio, len(arr)):
+        direita.append(arr[i])
+        
+    esquerda = merge_sort(esquerda)
+    direita = merge_sort(direita)
     
     return merge(esquerda, direita)
 
