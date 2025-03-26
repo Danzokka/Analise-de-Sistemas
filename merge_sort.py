@@ -1,4 +1,5 @@
 # Merge Sort Function
+import random
 
 def merge_sort(arr: list[int]) -> list[int]:
     # Caso base
@@ -28,6 +29,7 @@ def merge(esquerda: list[int], direita: list[int]) -> list[int]:
     esquerda_index = 0
     direita_index = 0
     
+    # Enquanto houver elementos em ambos os arrays
     while esquerda_index < len(esquerda) and direita_index < len(direita):
         if esquerda[esquerda_index] < direita[direita_index]:
             merged.append(esquerda[esquerda_index])
@@ -36,11 +38,24 @@ def merge(esquerda: list[int], direita: list[int]) -> list[int]:
             merged.append(direita[direita_index])
             direita_index += 1
     
-    merged += esquerda[esquerda_index:]
-    merged += direita[direita_index:]
+    # Adiciona os elementos restantes
+    while esquerda_index < len(esquerda):
+        merged.append(esquerda[esquerda_index])
+        esquerda_index += 1
+    
+    while direita_index < len(direita):
+        merged.append(direita[direita_index])
+        direita_index += 1
     
     return merged
 
+def gerar_array_com_numeros_aleatorios(tamanho: int) -> list[int]:
+    arr = []
+    for i in range(tamanho):
+        arr.append(random.randint(0, 10000))
+    return arr
+
+
 # Test
-arr = [1, 14, 2, 5, 2, 18]
+arr = gerar_array_com_numeros_aleatorios(100)
 print(merge_sort(arr))
